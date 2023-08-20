@@ -34,9 +34,7 @@ const registerUser = async (req, res) => {
     });
   } catch (error) {
     console.log(error)
-    return res
-      .status(500)
-      .json({ success: false, error: "Internal server error" });
+    return next(error)
   }
 };
 
@@ -70,9 +68,7 @@ const loginUser = async (req, res) => {
     res.json({ success: true, token});
   } catch (error) {
     console.log(error)
-    return res 
-      .status(500)
-      .json({ success: false, error: "Internal server error" });
+    return next(error);
   }
 };
 const validate = (req) => {

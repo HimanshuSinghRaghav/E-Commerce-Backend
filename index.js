@@ -6,6 +6,7 @@ import registerRouter from './routes/register.route.js'
 import loginRouter from './routes/login.route.js'
 import config from 'config'
 import userRouter from './routes/users.route.js'
+import { error } from './middalware/error.js'
 
 if(!config.get('jwtPrivateKey')){
   console.error('FATAL ERROR : jwt private key is not defined')
@@ -33,6 +34,8 @@ app.use('/seller', registerRouter);
 app.use('/seller' , loginRouter);
 
 app.get('/' , (req, res)=>res.send("server running in development"))
+
+app.use(error)
 // Start the server
 app.listen(port, () => {
   console.log('Server started server sunning at http://localhost:3000');
