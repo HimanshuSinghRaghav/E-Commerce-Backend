@@ -6,7 +6,7 @@ import adminAuth from '../middalware/admin.js';
 const router = express.Router();
 
 
-router.use([verifyToken , adminAuth])
+router.use(verifyToken)
 
 
 router

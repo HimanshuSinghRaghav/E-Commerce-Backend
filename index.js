@@ -4,6 +4,8 @@ import cors from 'cors'
 import 'dotenv/config'
 import registerRouter from './routes/register.route.js'
 import loginRouter from './routes/login.route.js'
+import productRouter from './routes/product.route.js'
+import developerRouter from './routes/developer.route.js'
 import config from 'config'
 import userRouter from './routes/users.route.js'
 import { error } from './middalware/error.js'
@@ -29,9 +31,13 @@ app.use('/user', registerRouter);
 app.use('/user' , loginRouter);
 app.use('/user' , userRouter)
 
-
+// seller
 app.use('/seller', registerRouter);
 app.use('/seller' , loginRouter);
+app.use('/seller' , productRouter)
+
+// developer
+app.use('/developer' , developerRouter)
 
 app.get('/' , (req, res)=>res.send("server running in development"))
 
