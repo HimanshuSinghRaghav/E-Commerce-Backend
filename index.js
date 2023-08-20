@@ -18,11 +18,14 @@ const port = process.env.PORT | 3000;
 app.use(express.json()); 
 app.use(cors());
 
+// User Endpoints
+app.use('/user', registerRouter);
+app.use('/user' , loginRouter);
+// app.use('/user' , userRouter)
 
-app.use('/api/v1', registerRouter);
 
-
-app.use('/api/v1' , loginRouter)
+app.use('/seller', registerRouter);
+app.use('/seller' , loginRouter);
 
 app.get('/' , (req, res)=>res.send("server running in development"))
 // Start the server
