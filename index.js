@@ -4,8 +4,13 @@ import cors from 'cors'
 import 'dotenv/config'
 import registerRouter from './routes/register.route.js'
 import loginRouter from './routes/login.route.js'
+import config from 'config'
+import userRouter from './routes/users.route.js'
 
-
+if(!config.get('jwtPrivateKey')){
+  console.error('FATAL ERROR : jwt private key is not defined')
+  process.exit(1)
+}
 const app = express();
 
 // Connect to MongoDB
@@ -21,7 +26,7 @@ app.use(cors());
 // User Endpoints
 app.use('/user', registerRouter);
 app.use('/user' , loginRouter);
-// app.use('/user' , userRouter)
+app.use('/user' , userRouter)
 
 
 app.use('/seller', registerRouter);

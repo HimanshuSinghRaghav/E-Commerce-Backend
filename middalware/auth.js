@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-
+import config from 'config'
 
 const verifyToken = (req, res, next) => {
     const authHeader = req.headers.authorization;
@@ -8,7 +8,7 @@ const verifyToken = (req, res, next) => {
     if (authHeader && authHeader.startsWith('Bearer ')) {
       const token = authHeader.split(' ')[1];
   
-      jwt.verify(token, 'secretKey', (err, decoded) => {
+      jwt.verify(token, config.get('jwtPrivateKey'), (err, decoded) => {
         if (err) {
           return res.status(401).json({ error: 'Invalid token' });
         }
