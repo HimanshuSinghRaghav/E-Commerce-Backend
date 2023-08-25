@@ -10,17 +10,17 @@ const verifyToken = (req, res, next) => {
   
       jwt.verify(token, config.get('jwtPrivateKey'), (err, decoded) => {
         if (err) {
-          return res.status(401).json({ error: 'Invalid token' });
+          return res.status(403).json({ error: 'Invalid token' });
         }
   
         req.user = decoded;
         next();
       });
     } else {
-      res.status(401).json({ error: 'No token provided' });
+      res.status(403).json({ error: 'No token provided' });
     }
     }catch(error){
-        res.status(401).json({ success:false , error:error.message });
+        res.status(403).json({ success:false , error:error.message });
     }
 
     return next
