@@ -30,7 +30,7 @@ const registerUser = async (req, res) => {
     const token = user.generateAuthToken();
     res.header('x-auth-token' , token).send({
       success: true,
-      user: { name: user.name, email: user.email },
+      token: token,
     });
   } catch (error) {
     console.log(error)
