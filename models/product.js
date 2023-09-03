@@ -12,6 +12,7 @@ const productSchema = new mongoose.Schema({
     ref: 'Product'
   },
   subcategorie: String,
+  metadata: {}
 },{timestamps: true});
 
 
