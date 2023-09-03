@@ -8,6 +8,7 @@ import productRouter from './routes/product.route.js'
 import developerRouter from './routes/developer.route.js'
 import config from 'config'
 import userRouter from './routes/users.route.js'
+import cartRouter from './routes/cart.route.js'
 import { error } from './middalware/error.js'
 
 if(!config.get('jwtPrivateKey')){
@@ -30,8 +31,8 @@ app.use(cors());
 app.use('/user', registerRouter);
 app.use('/user' , loginRouter);
 app.use('/user' , userRouter)
+app.use('/user' , cartRouter)
 
-// seller
 app.use('/seller', registerRouter);
 app.use('/seller' , loginRouter);
 app.use('/seller' , productRouter)
